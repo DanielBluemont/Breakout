@@ -1,0 +1,68 @@
+# Build artifacts
+bin/
+build/
+out/
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.so
+*.a
+*.ilk
+*.pdb
+*.exp
+*.idb
+
+# CMake specific
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Visual Studio specific
+.vs/
+*.VC.db
+*.VC.opendb
+*.vcxproj.user
+*.suo
+*.user
+*.ncb
+*.aps
+*.log
+Debug/
+Release/
+x64/
+Win32/
+
+# Xcode specific
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# Eclipse specific
+.project
+.classpath
+.settings/
+
+# Temporary files
+*~
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Editor specific files (e.g., VS Code)
+.vscode/
+
+# Dependency directories (if not managed by a package manager)
+# For example, if you manually include GLFW, GLAD, etc.
+# Uncomment and adjust as needed
+# dependencies/
+# external/
+
+# Log files
+*.log
+
+# User-specific configuration (if any)
+# my_config.ini
