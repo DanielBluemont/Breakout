@@ -24,6 +24,7 @@
     <ProjectGuid>{2be05c5e-72bd-4858-a6fd-ef7335519e85}</ProjectGuid>
     <RootNamespace>OpenGLLearn</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Breakout</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -108,12 +109,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\stb</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\stb;$(SolutionDir)headers;$(SolutionDir)source;$(SolutionDir)Dependencies\glad\include;$(SolutionDir)Dependencies\glfw-3.4\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;user32.lib;gdi32.lib;shell32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glfw-3.4\build\src\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -125,7 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\stb</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\stb;$(SolutionDir)headers;$(SolutionDir)source;$(SolutionDir)Dependencies\glad\include;$(SolutionDir)Dependencies\glfw-3.4\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,26 +134,39 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glfw-3.4\build\src\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;user32.lib;gdi32.lib;shell32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Extra Libraries\glad\src\glad.c" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="resource_manager.cpp" />
-    <ClCompile Include="shader.cpp" />
-    <ClCompile Include="sprite_renderer.cpp" />
-    <ClCompile Include="texture.cpp" />
-    <ClCompile Include="program.cpp" />
+    <ClCompile Include="source\ball_object.cpp" />
+    <ClCompile Include="source\game_level.cpp" />
+    <ClCompile Include="source\game_object.cpp" />
+    <ClCompile Include="source\game.cpp" />
+    <ClCompile Include="source\particle_generator.cpp" />
+    <ClCompile Include="source\post_processor.cpp" />
+    <ClCompile Include="source\resource_manager.cpp" />
+    <ClCompile Include="source\shader.cpp" />
+    <ClCompile Include="source\sprite_renderer.cpp" />
+    <ClCompile Include="source\texture.cpp" />
+    <ClCompile Include="source\program.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.h" />
-    <ClInclude Include="resource_manager.h" />
-    <ClInclude Include="shader.h" />
-    <ClInclude Include="sprite_renderer.h" />
-    <ClInclude Include="texture.h" />
+    <ClInclude Include="headers\ball_object.h" />
+    <ClInclude Include="headers\game_level.h" />
+    <ClInclude Include="headers\game_object.h" />
+    <ClInclude Include="headers\game.h" />
+    <ClInclude Include="headers\particle_generator.h" />
+    <ClInclude Include="headers\post_processor.h" />
+    <ClInclude Include="headers\power_up.h" />
+    <ClInclude Include="headers\resource_manager.h" />
+    <ClInclude Include="headers\shader.h" />
+    <ClInclude Include="headers\sprite_renderer.h" />
+    <ClInclude Include="headers\texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\particle.frag" />
+    <None Include="shaders\particle.vs" />
     <None Include="shaders\sprite.frag" />
     <None Include="shaders\sprite.vs" />
   </ItemGroup>
