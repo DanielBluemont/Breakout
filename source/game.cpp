@@ -57,7 +57,7 @@ void Game::Init()
     this->Levels.push_back(two);
     this->Levels.push_back(three);
     this->Levels.push_back(four);
-    this->Level = 0;
+    this->Level = 1;
     // configure game objects
     glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
@@ -176,36 +176,32 @@ void Game::DoCollisions()
         if (!box.Destroyed)
         {
             Collision collision = CheckCollision(*Ball, box);
-            if (std::get<0>(collision)) // if collision is true
+            if (std::get<0>(collision)) 
             {
-                // destroy block if not solid
                 if (!box.IsSolid && !box.Fading)
                 {
                     box.Fading = true;
                 }
 
-                // collision resolution
                 Direction dir = std::get<1>(collision);
                 glm::vec2 diff_vector = std::get<2>(collision);
-                if (dir == LEFT || dir == RIGHT) // horizontal collision
+                if (dir == LEFT || dir == RIGHT) 
                 {
-                    Ball->Velocity.x = -Ball->Velocity.x; // reverse horizontal velocity
-                    // relocate
+                    Ball->Velocity.x = -Ball->Velocity.x; 
                     float penetration = Ball->Radius - std::abs(diff_vector.x);
                     if (dir == LEFT)
-                        Ball->Position.x += penetration; // move ball to right
+                        Ball->Position.x += penetration;
                     else
-                        Ball->Position.x -= penetration; // move ball to left;
+                        Ball->Position.x -= penetration; 
                 }
-                else // vertical collision
+                else 
                 {
-                    Ball->Velocity.y = -Ball->Velocity.y; // reverse vertical velocity
-                    // relocate
+                    Ball->Velocity.y = -Ball->Velocity.y; 
                     float penetration = Ball->Radius - std::abs(diff_vector.y);
                     if (dir == UP)
-                        Ball->Position.y -= penetration; // move ball bback up
+                        Ball->Position.y -= penetration; 
                     else
-                        Ball->Position.y += penetration; // move ball back down
+                        Ball->Position.y += penetration;
                 }
             }
         }
